@@ -18,7 +18,7 @@
     <body>
         <x-header_all />
             @yield('content')
-         
+
     </body>
      <!-- Bootstrap core JS-->
      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -26,4 +26,4 @@
         <!-- Core theme JS-->
         <script src="{{asset('js/scripts.js')}}"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-</html>    
+</html>

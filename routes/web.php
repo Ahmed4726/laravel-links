@@ -2,10 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\CaptchaController;
+
 Route::get('/', function () {
     return view('index');
 })->name('welcome');
 
+Route::get('/reload-captcha','CaptchaController@reloadCaptcha');
 
 Auth::routes();
 
