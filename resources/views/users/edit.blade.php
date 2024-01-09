@@ -1,11 +1,30 @@
-@extends('layouts.app')
+@extends('layouts.front')
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-12 card">
+            <div class="col-12 card mt-5">
                 <div class="card-body">
-                    <h2 class="card-title">Your settings</h2>
-                    <form action="/dashboard/settings" method="post">
+                    <h2 class="card-title">Editing user settings</h2>
+                    <form action="/dashboard/settings" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="bio">Add your bio</label>
+                                <textarea id="bio" name="bio" class="form-control{{ $errors->first('bio') ? ' is-invalid' : '' }}" placeholder="Enter your bio here">{{ $user->bio }}</textarea>
+                                @if($errors->first('bio'))
+                                    <div class="invalid-feedback">{{ $errors->first('bio') }}</div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="profileLink">Profile Picture Link</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="profileLink" name="profile_link" placeholder="Enter image URL" value="{{ $user->profile_link }}">
+                                </div>
+                            </div>
+                        </div>   
+                        </div>
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
@@ -27,7 +46,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-12 mt-2">
                                 @csrf
                                 <button type="submit" class="btn btn-primary{{ session('success') ? ' is-valid' : '' }}">Save Settings</button>
                                 @if(session('success'))
@@ -40,4 +59,11 @@
             </div>
         </div>
     </div>
+    <script>
+    function displayFileName() {
+        const fileInput = document.getElementById('file');
+        const filenameDisplay = document.getElementById('filename');
+        filenameDisplay.innerText = fileInput.files[0].name;
+    }
+</script>     
 @endsection

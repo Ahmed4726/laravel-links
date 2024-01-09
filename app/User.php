@@ -15,8 +15,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'users';
     protected $fillable = [
-        'username', 'email', 'password', 'background_color', 'text_color'
+        'username', 'password', 'background_color', 'text_color','status','bio','profile_link',
     ];
 
     /**
@@ -32,12 +33,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Link::class);
     }
+    public function banners()
+    {
+        return $this->hasMany(Banner::class);
+    }
 
     public function visits()
     {
         return $this->hasManyThrough(Visit::class, Link::class);
     }
 
+    public function payments()
+    {
+        return $this->hasOne(Payment::class);
+    }
     public function getRouteKeyName() {
         return 'username';
     }
