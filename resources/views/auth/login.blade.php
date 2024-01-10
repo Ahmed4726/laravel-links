@@ -39,11 +39,19 @@
                         </div>
                         <div class="form-group mt-2 mb-2">
                             <div class="captcha">
-                                <span>{!! captcha_img() !!}</span>
-                                <button type="button" class="btn btn-danger reload" id="reload">
+                                <span>{!! captcha_img('flat') !!}</span>
+                                {{-- <button type="button" class="btn btn-danger reload" id="reload">
                                     &#x21bb;
-                                </button>
+                                </button> --}}
                             </div>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <input type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                            @error('captcha')
+                            <strong>{{ $message }}</strong>
+
+                            @enderror
                         </div>
                         <!-- <div class="form-group row">
                             <div class="col-md-6 offset-md-4">

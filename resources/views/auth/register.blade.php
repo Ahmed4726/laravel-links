@@ -37,7 +37,22 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-                        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_KEY') }}"></div>
+                        <div class="form-group mt-2 mb-2">
+                            <div class="captcha">
+                                <span>{!! captcha_img('flat') !!}</span>
+                                {{-- <button type="button" class="btn btn-danger reload" id="reload">
+                                    &#x21bb;
+                                </button> --}}
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <input type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                            @error('captcha')
+                            <strong>{{ $message }}</strong>
+
+                            @enderror
+                        </div>
                         <div class="form-group row mb-0 mt-2">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
